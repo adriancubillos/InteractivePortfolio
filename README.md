@@ -16,3 +16,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## VSCode extensions used
+
+- Tailwind CSS IntelliSense v0.12.14
+- ES7+ React/Redux/React-Native snippets v4.4.3
+- Tabnine
