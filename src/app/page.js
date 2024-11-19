@@ -11,7 +11,7 @@ export default function Home() {
       <Image src={bg} alt="background-image" fill className="-z-50 w-full h-full object-cover object-center opacity-25" />
       <div className="w-full h-screen">
         <Navigation />
-        <RenderModel preset="forrest">
+        <RenderModel preset="forest">
           <Gandalf />
         </RenderModel>
       </div>

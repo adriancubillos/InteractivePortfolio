@@ -9,17 +9,17 @@ import { projectsData } from "../../data";
 
 export default function Projects() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <Image src={bg} alt="background-image" fill className="-z-50 w-full h-full object-cover object-center opacity-25" />
+    <>
+      <Image src={bg} alt="background-image" className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-25" />
 
       <ProjectsList projects={projectsData} />
 
-      <div className="flex items-center justify-start absolute top-32 left-0 h-screen -z-20">
+      <div className="flex items-center justify-start absolute top-32 -left-24 h-screen -z-20">
         <RenderModel preset="sunset">
           <Staff />
         </RenderModel>
       </div>
 
-    </main>
+    </>
   );
 }
