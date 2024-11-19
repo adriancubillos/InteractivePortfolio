@@ -3,6 +3,7 @@ import bg from "../../public/background/home-background.jpeg";
 import RenderModel from "./components/RenderModel";
 import Gandalf from "./components/models/Gandalf";
 import Navigation from "./components/navigation";
+import FireFliesBackground from "./components/FireFliesBackground";
 
 export default function Home() {
   return (
