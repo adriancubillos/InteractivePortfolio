@@ -102,14 +102,14 @@ export const BtnList = [
   },
   {
     label: "LinkedIn",
-    link: "https://www.linkedin.com/in/codebucks",
+    link: "https://www.linkedin.com/in/adrian-cubillos/",
     icon: "linkedin",
     newTab: true,
   },
   {
-    label: "X",
-    link: "https://www.x.com/code_bucks",
-    icon: "twitter",
+    label: "Stackoverflow",
+    link: "https://stackoverflow.com/users/10448307/",
+    icon: "stack",
     newTab: true,
   },
   {
