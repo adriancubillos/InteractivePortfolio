@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import clsx from 'clsx'
 import React, { Suspense } from 'react'
 
-const RenderModel = ({ children, className }) => {
+const RenderModel = ({ children, className, preset }) => {
   return (
     <div>
       <div className={clsx("w-screen h-screen -z-10 relative", className)}>
@@ -12,7 +12,7 @@ const RenderModel = ({ children, className }) => {
           <Suspense fallback={null}>
             {children}
           </Suspense>
-          <Environment preset="forest" />
+          <Environment preset={preset} />
         </Canvas>
       </div>
     </div>

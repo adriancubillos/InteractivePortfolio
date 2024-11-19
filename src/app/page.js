@@ -3,7 +3,7 @@ import bg from "../../public/background/home-background.jpeg";
 import RenderModel from "./components/RenderModel";
 import Gandalf from "./components/models/Gandalf";
 import Navigation from "./components/navigation";
-import FireFliesBackground from "./components/FireFliesBackground";
+
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Image src={bg} alt="background-image" fill className="-z-50 w-full h-full object-cover object-center opacity-25" />
       <div className="w-full h-screen">
         <Navigation />
-        <RenderModel>
+        <RenderModel preset="forrest">
           <Gandalf />
         </RenderModel>
       </div>
