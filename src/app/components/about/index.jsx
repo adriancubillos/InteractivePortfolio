@@ -17,11 +17,11 @@ const AboutDetails = () => {
             Developer of Dreams
           </h2>
           <p className='font-semibold'>
-            I'm a passionate and results-oriented Senior Software Engineer with 15+ years of experience transforming
+            I&apos;m a passionate and results-oriented Senior Software Engineer with 15+ years of experience transforming
             complex challenges into elegant, high-performing software solutions.
             My journey has spanned full-stack development (Java, JavaScript frameworks including React & Next.js, TypeScript),
             cloud technologies (AWS, Azure, Kubernetes), and Agile methodologies.
-            I'm adept at leading teams, modernizing legacy systems, and ensuring robust security.
+            I&apos;m adept at leading teams, modernizing legacy systems, and ensuring robust security.
             My commitment to creating exceptional user experiences is complemented by my fluency in English and Spanish.
           </p>
         </ItemLayout>
@@ -69,7 +69,7 @@ const AboutDetails = () => {
         <ItemLayout className={'col-span-6 !p-0'}>
           <img
             className="w-full h-auto"
-            src='https://github-readme-stats.vercel.app/api/pin?username=adriancubillos&repo=InteractivePortfolio&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF'
+            src='https://github-readme-stats.vercel.app/api/pin?username=adriancubillos&repo=github-readme-stats&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF'
             alt='Github Readme Stats'
             loading='lazy'></img>
         </ItemLayout>
