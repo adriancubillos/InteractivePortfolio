@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 
-export default function Staff(props) {
+export default function Staff({ materialColor, ...props }) {
   const { nodes, materials } = useGLTF('/models/staff-transformed.glb')
 
   const modelRef = useRef();
@@ -20,8 +20,22 @@ export default function Staff(props) {
     <group {...props} dispose={null}
       ref={modelRef}
       scale={[3, 3, 3]}
-      position={[-5.5, -2, 0]}
+      position={[0, -2, 0]}
+
     >
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Wizard_Staff3_Wizard_Staff3_0.geometry}
+        material={materials.Wizard_Staff3}
+        position={[-0.041, 0.983, 0.768]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={0.04}
+        material-color={materialColor || null}
+      >
+        {materialColor & <meshPhysicalMaterial color={materialColor} />}
+      </mesh>
+
       <mesh
         castShadow
         receiveShadow
