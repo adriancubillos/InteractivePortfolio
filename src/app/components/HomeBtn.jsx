@@ -5,7 +5,7 @@ import React from 'react'
 const HomeBtn = () => {
   return (
     <Link href={"/"} target={"_self"}
-      className='text-foreground rounded-full flex items-center justify-center custom-bg fixed left-24 top-16 w-fit self-start'
+      className='text-foreground rounded-full flex items-center justify-center custom-bg fixed left-[3%] top-10 w-fit self-start z-50'
 
       aria-label={"home"}
       name={"home"}>
