@@ -1,13 +1,7 @@
-import clsx from 'clsx'
-import React from 'react'
 
-const ItemLayout = ({ children, className }) => {
-  return (
-    <div className={clsx("custom-bg p-4 sm:p-8 rounded-xl flex items-center justify-center space-y-5", className)}>
-      {children}
-    </div>
-  )
-}
+import React from 'react'
+import ItemLayout from './ItemLayout'
+
 const AboutDetails = () => {
   return (
     <section className='py-20 w-full'>
