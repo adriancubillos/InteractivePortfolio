@@ -69,7 +69,7 @@ const AboutDetails = () => {
         <ItemLayout className={'col-span-6 !p-0'}>
           <img
             className="w-full h-auto"
-            src='https://github-readme-stats.vercel.app/api/pin?username=adriancubillos&repo=github-readme-stats&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF'
+            src='https://github-readme-stats.vercel.app/api/pin?username=adriancubillos&repo=InteractivePortfolio&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF'
             alt='Github Readme Stats'
             loading='lazy'></img>
         </ItemLayout>
