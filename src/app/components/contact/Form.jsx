@@ -3,6 +3,24 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { Toaster, toast } from 'sonner'
+import { delay, motion } from 'framer-motion';
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1, transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
+    }
+  }
+}
+
+const item = {
+  hidden: { scale: 0 },
+  show: { scale: 1 }
+}
+
+
 
 export default function Form() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -55,9 +73,15 @@ export default function Form() {
     <>
       <Toaster richColors={true} />
 
-      <form className='max-w-md pt-10 w-full flex flex-col items-center justify-center space-y-4'
+      <motion.form
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className='max-w-md pt-10 w-full flex flex-col items-center justify-center space-y-4'
         onSubmit={handleSubmit(onSubmit)}>
-        <input className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        <motion.input
+          variants={item}
+          className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
           type="text"
           placeholder="name"
           {...register("name", {
@@ -71,13 +95,17 @@ export default function Form() {
         {
           errors.name && <p className='inline-block self-start text-accent'>{errors.name.message}</p>
         }
-        <input className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        <motion.input
+          variants={item}
+          className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
           type="email" placeholder="email" {...register("email", { required: "This field is required" })} />
         {
           errors.email && <p className='inline-block self-start text-accent'>{errors.email.message}</p>
         }
 
-        <textarea className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        <motion.textarea
+          variants={item}
+          className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
           placeholder="message" {...register("message", {
             required: "This field is required",
             maxLength: {
@@ -94,11 +122,11 @@ export default function Form() {
           errors.message && <p className='inline-block self-start text-accent'>{errors.message.message}</p>
         }
 
-        <input className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid 
+        <motion.input className='px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid 
       hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize'
           value="Dispatch your missive!"
           type="submit" />
-      </form>
+      </motion.form>
     </>
   );
 }
