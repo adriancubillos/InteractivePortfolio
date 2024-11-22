@@ -14,7 +14,9 @@ export default function Projects() {
 
       <ProjectsList projects={projectsData} />
 
-      <div className="flex items-center justify-center fixed  top-20 -z-10 -left-[40%] sm:-left-[44%] lg:-left-[45%] h-screen">
+      <div className="flex items-center justify-center fixed top-16 lg:top-20 -z-10 
+      -left-[40%] sm:-left-[44%] lg:-left-[45%]">
+
         <RenderModel preset="park">
           <Staff materialColor="#BA8055" />
         </RenderModel>
