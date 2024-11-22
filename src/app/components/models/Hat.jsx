@@ -35,4 +35,4 @@ export default function Hat(props) {
   )
 }
 
-useGLTF.preload('/hat-transformed.glb')
+useGLTF.preload('/models/hat-transformed.glb')
