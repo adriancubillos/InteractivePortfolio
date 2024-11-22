@@ -4,6 +4,16 @@ import React from 'react'
 import NavButton from './NavButton';
 import ResponsiveComponent from '../ResponsiveComponent';
 import useScreenSize from '../hooks/useScreenSize';
+import { motion } from 'framer-motion';
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1, transition: {
+      staggerChildren: 0.3,
+    }
+  }
+}
 
 const Navigation = () => {
 
@@ -23,9 +33,15 @@ const Navigation = () => {
     <div className='w-full fixed h-screen flex items-center justify-center'>
       <ResponsiveComponent>
         {
-          ({ size }) => {
+          () => {
             return !isSmall ?
-              <div className="w-max flex items-center justify-center relative hover:pause animate-spin-slow  group">
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+
+
+                className="w-max flex items-center justify-center relative hover:pause animate-spin-slow  group">
                 {
                   BtnList.map((btn, index) => {
 
@@ -41,24 +57,32 @@ const Navigation = () => {
                     return <NavButton key={btn.label} x={x} y={y} {...btn} />
                   })
                 }
-              </div>
+              </motion.div>
               :
               <>
                 {/* Menu split in two */}
-                <div className="w-full xs:w-max px-2.5 xs:p-0 flex flex-col space-y-4 items-start xs:items-center justify-center relative">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="w-full xs:w-max px-2.5 xs:p-0 flex flex-col space-y-4 items-start xs:items-center justify-center relative">
                   {
                     BtnList.slice(0, getlistLenght(BtnList)).map((btn, index) => {
                       return <NavButton key={btn.label} x={0} y={0} {...btn} />
                     })
                   }
-                </div>
-                <div className="w-full xs:w-max px-2.5 xs:p-0 flex flex-col space-y-4 items-end xs:items-center justify-center relative">
+                </motion.div>
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="w-full xs:w-max px-2.5 xs:p-0 flex flex-col space-y-4 items-end xs:items-center justify-center relative">
                   {
                     BtnList.slice(getlistLenght(BtnList), BtnList.length).map((btn, index) => {
                       return <NavButton key={btn.label} x={0} y={0} {...btn} labelDirection='left' />
                     })
                   }
-                </div>
+                </motion.div>
               </>
           }
         }

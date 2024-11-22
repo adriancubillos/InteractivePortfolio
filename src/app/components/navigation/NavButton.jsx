@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import ResponsiveComponent from '../ResponsiveComponent';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
 
 const getIcon = (iconName) => {
   switch (iconName) {
@@ -28,6 +29,13 @@ const getIcon = (iconName) => {
   }
 }
 
+const item = {
+  hidden: { scale: 0 },
+  show: { scale: 1 }
+}
+
+const NavLink = motion(Link)
+
 const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }) => {
   return (
     <ResponsiveComponent>
@@ -37,7 +45,8 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }
             <div className='absolute cursor-pointer z-50'
               style={{ transform: `translate(${x}, ${y})` }}>
 
-              <Link href={link} target={newTab ? '_blank' : "_self"}
+              <NavLink href={link} target={newTab ? '_blank' : "_self"}
+                variants={item}
                 className='text-foreground rounded-full flex items-center justify-center custom-bg'
                 aria-label={label}
                 name={label}>
@@ -48,13 +57,14 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }
                     {label}
                   </span>
                 </span>
-              </Link>
+              </NavLink>
             </div>
             :
             <div className='w-fit cursor-pointer z-50'
               style={{ transform: `translate(${x}, ${y})` }}>
 
-              <Link href={link} target={newTab ? '_blank' : "_self"}
+              <NavLink href={link} target={newTab ? '_blank' : "_self"}
+                variants={item}
                 className='text-foreground rounded-full flex items-center justify-center custom-bg'
                 aria-label={label}
                 name={label}>
@@ -66,7 +76,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }
                   </span>
 
                 </span>
-              </Link>
+              </NavLink>
             </div>
         }
       }
