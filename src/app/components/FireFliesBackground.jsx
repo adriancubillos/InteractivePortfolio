@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
 
 const createFirefly = () => ({
   id: Math.random(),
@@ -14,10 +14,7 @@ const FireFliesBackground = () => {
   useEffect(() => {
     const addFireflyPeriodically = () => {
       const newFirefly = createFirefly();
-      setFireflies((currentFireflies) => [
-        ...currentFireflies.slice(-14),
-        newFirefly,
-      ]);
+      setFireflies((currentFireflies) => [...currentFireflies.slice(-14), newFirefly]);
     };
 
     const interval = setInterval(addFireflyPeriodically, 1000);
@@ -36,8 +33,7 @@ const FireFliesBackground = () => {
               top: firefly.top,
               left: firefly.left,
               animation: `move ${firefly.animationDuration} infinite alternate`,
-            }}
-          ></div>
+            }}></div>
         );
       })}
     </div>

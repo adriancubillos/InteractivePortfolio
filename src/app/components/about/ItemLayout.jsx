@@ -1,7 +1,6 @@
-'use client'
+'use client';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-
 
 const ItemLayout = ({ children, className }) => {
   return (
@@ -9,11 +8,10 @@ const ItemLayout = ({ children, className }) => {
       initial={{ scale: 0 }}
       whileInView={{ scale: 1 }}
       transition={{ duration: 0.5 }}
-
-      className={clsx("custom-bg p-4 sm:p-8 rounded-xl flex items-center justify-center space-y-5", className)}>
+      className={clsx('custom-bg p-4 sm:p-8 rounded-xl flex items-center justify-center space-y-5', className)}>
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 export default ItemLayout;
