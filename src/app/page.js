@@ -5,6 +5,10 @@ import RenderModel from "./components/RenderModel";
 import Navigation from "./components/navigation";
 import dynamic from "next/dynamic";
 
+/*
+  On-demand loading: Components are only loaded when they're actually needed, which can improve performance.
+  Reduced server load: By setting ssr: false, you're ensuring this potentially heavy component (likely a 3D model) isn't rendered on the server, which could slow down server-side rendering.
+*/
 const Gandalf = dynamic(() => import("@/app/components/models/Gandalf"), { ssr: false })
 
 export default function Home() {
