@@ -34,7 +34,7 @@ const item = {
   show: { scale: 1 }
 }
 
-const NavLink = motion(Link)
+const NavLink = motion.create(Link)
 
 const NavButton = ({ x, y, label, link, icon, newTab, labelDirection = 'right' }) => {
   return (
