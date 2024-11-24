@@ -51,6 +51,7 @@ export default function Form() {
               id: toastId,
             },
           );
+          console.error('Failed to send the message: ', error);
         },
       );
   };
