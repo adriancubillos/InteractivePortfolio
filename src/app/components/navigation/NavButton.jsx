@@ -1,4 +1,4 @@
-import { FileSliders, FileStack, Github, Home, LinkedinIcon, NotebookText, Phone, User } from 'lucide-react';
+import { FileStack, FileText, FolderOpenDot, Github, Home, LinkedinIcon, Phone, User } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import ResponsiveComponent from '../ResponsiveComponent';
@@ -12,7 +12,7 @@ const getIcon = (iconName) => {
     case 'about':
       return <User className="w-full h-auto" strokeWidth={1.5} />;
     case 'projects':
-      return <FileSliders className="w-full h-auto" strokeWidth={1.5} />;
+      return <FolderOpenDot className="w-full h-auto" strokeWidth={1.5} />;
     case 'contact':
       return <Phone className="w-full h-auto" strokeWidth={1.5} />;
     case 'github':
@@ -22,7 +22,7 @@ const getIcon = (iconName) => {
     case 'stack':
       return <FileStack className="w-full h-auto" strokeWidth={1.5} />;
     case 'resume':
-      return <NotebookText className="w-full h-auto" strokeWidth={1.5} />;
+      return <FileText className="w-full h-auto" strokeWidth={1.5} />;
 
     default:
       return <Home className="w-full h-auto" strokeWidth={1.5} />;
