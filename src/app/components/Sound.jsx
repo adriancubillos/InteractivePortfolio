@@ -6,7 +6,11 @@ import { createPortal } from 'react-dom'
 
 
 const Modal = ({ onClose, toggle }) => {
-
+  /*
+    createPortal function renders a component outside its parent DOM hierarchy
+    By using createPortal, the modal can be rendered at the root level of the DOM (or any other specified location), which is useful for modals, tooltips, or any UI element that needs to "break out" of its parent container's layout or stacking context.
+    This approach is particularly useful for modals because it allows the modal to be rendered on top of other content, regardless of where the Modal component is placed in the React component tree.
+  */
   return createPortal(
     <div className='fixed inset-0 bg-background/60 backdrop-blur-sm flex items-center justify-center pointer-events-auto'>
       <div className='bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] py-8 px-6 xs:px-10 sm:px-16 rounded shadow-glass-inset text-center space-y-8'>
@@ -29,7 +33,7 @@ const Sound = () => {
   const [showModal, setShowModal] = useState(false)
 
   const handleFirstUserInteraction = () => {
-    const musicConsent = localStorage.getItem('musicConsent');;
+    const musicConsent = sessionStorage.getItem('musicConsent');;
     if (musicConsent === "true " && isPlaying) {
       audioRef.current.play();
       setIsPlaying(true);
@@ -40,7 +44,7 @@ const Sound = () => {
   }
 
   useEffect(() => {
-    const consent = localStorage.getItem('musicConsent');
+    const consent = sessionStorage.getItem('musicConsent');
     if (consent) {
       setIsPlaying(consent === 'true');
 
@@ -58,7 +62,7 @@ const Sound = () => {
     const newState = !isPlaying;
     setIsPlaying(!isPlaying)
     newState ? audioRef.current.play() : audioRef.current.pause();
-    localStorage.setItem('musicConsent', String(newState))
+    sessionStorage.setItem('musicConsent', String(newState))
     setShowModal(false);
   }
 
