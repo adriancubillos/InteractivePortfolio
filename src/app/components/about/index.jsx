@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import ItemLayout from './ItemLayout';
 
@@ -39,7 +40,7 @@ const AboutDetails = () => {
           <img
             className="w-full h-auto"
             src="https://github-readme-stats.vercel.app/api/top-langs?username=adriancubillos&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF"
-            alt="Github Stats Image"
+            alt="Github Top Languages"
             loading="lazy"></img>
         </ItemLayout>
 
