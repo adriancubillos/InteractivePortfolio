@@ -119,3 +119,27 @@ export const BtnList = [
     newTab: true,
   },
 ];
+
+// Array of music file names
+export const musicFiles = [
+  {
+    name: 'Birds Forest',
+    file: 'birds39-forest-20772.mp3',
+  },
+  {
+    name: 'Flute Guitar',
+    file: 'flute-guitar-classical-instrumental-249807.mp3',
+  },
+  {
+    name: 'Peruvian Train',
+    file: 'peruvian-train-202599.mp3',
+  },
+  {
+    name: 'Relaxing Music',
+    file: 'relaxing-music-119247.mp3',
+  },
+  {
+    name: 'Under African Skies',
+    file: 'under-african-skies-266969.mp3',
+  },
+];
