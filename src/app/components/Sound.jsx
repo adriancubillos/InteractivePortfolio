@@ -1,8 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
+import { Music4, Volume2, VolumeX } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { toast } from 'sonner';
+import { musicFiles } from '../data';
 
 const Modal = ({ onClose, toggle }) => {
   /*
@@ -28,13 +30,27 @@ const Modal = ({ onClose, toggle }) => {
         </div>
       </div>
     </div>,
-    document.getElementById('my-modal'),
+    document.getElementById('my-modal')
   );
 };
 const Sound = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  const [currentSong, setCurrentSong] = useState(null);
+
+  useEffect(() => {
+    // Function to choose a random song
+    const chooseRandomSong = () => {
+      const randomIndex = Math.floor(Math.random() * musicFiles.length);
+      return musicFiles[randomIndex];
+    };
+
+    setCurrentSong(chooseRandomSong());
+    sessionStorage.setItem('musicConsent', String(false));
+    setIsPlaying(false);
+  }, []);
 
   const handleFirstUserInteraction = () => {
     const musicConsent = sessionStorage.getItem('musicConsent');
@@ -44,7 +60,7 @@ const Sound = () => {
     }
 
     ['click', 'keydown', 'touchstart'].forEach((event) =>
-      document.removeEventListener(event, handleFirstUserInteraction),
+      document.removeEventListener(event, handleFirstUserInteraction)
     );
   };
 
@@ -55,12 +71,13 @@ const Sound = () => {
 
       if (consent === 'true') {
         ['click', 'keydown', 'touchstart'].forEach((event) =>
-          document.addEventListener(event, handleFirstUserInteraction),
+          document.addEventListener(event, handleFirstUserInteraction)
         );
       }
     } else {
       setShowModal(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleSound = () => {
@@ -69,48 +86,64 @@ const Sound = () => {
     newState ? audioRef.current.play() : audioRef.current.pause();
     sessionStorage.setItem('musicConsent', String(newState));
     setShowModal(false);
+    if (!isPlaying) showToast();
+  };
+
+  const showToast = () => {
+    toast('Now playing', {
+      className:
+        'backdrop-blur-sm bg-background/60 flex justify-center text-foreground rounded-md shadow-lg text-lg text',
+      description: `${currentSong.name}`,
+      duration: 3000,
+      icon: <Music4 />,
+      classNames: {
+        icon: 'text-accent pr-8 ', // Apply a custom class for the icon
+      },
+    });
   };
 
   return (
-    <div className="fixed top-4 right-2.5 xs:right-4 z-50 group">
-      {showModal && <Modal onClose={() => setShowModal(false)} toggle={toggleSound} />}
-
-      <audio ref={audioRef} loop>
-        <source src={'/audio/birds39-forest-20772.mp3'} type="audio/mpeg" />
-        Your Browser does not support the audio element.
-      </audio>
-
-      <motion.button
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.5 }}
-        onClick={toggleSound}
-        className="text-foreground rounded-full flex items-center justify-center custom-bg fixed right-[3%] top-10 w-fit self-start z-50"
-        aria-label={'sound'}
-        name={'sound'}>
-        {isPlaying ? (
-          <span className="relative w-14 h-14 p-4 hover:text-accent">
-            <Volume2 className="w-full h-auto" strokeWidth={1.5} />
-            <span className="peer absolute top-0 left-0 w-full h-full" />
-            <span
-              className="absolute hidden peer-hover:block px-2 py-1  mx-2 top-1/2 -translate-y-1/2 
-          bg-background text-foreground text-sm rounded-md shadow-lg right-full left-auto">
-              music on
-            </span>
-          </span>
-        ) : (
-          <span className="relative w-14 h-14 p-4 hover:text-accent">
-            <VolumeX className="w-full h-auto" strokeWidth={1.5} />
-            <span className="peer absolute top-0 left-0 w-full h-full" />
-            <span
-              className="absolute hidden peer-hover:block px-2 py-1  mx-2 top-1/2 -translate-y-1/2 
-          bg-background text-foreground text-sm rounded-md shadow-lg right-full left-auto">
-              music off
-            </span>
-          </span>
+    <>
+      <div className="fixed top-4 right-2.5 xs:right-4 z-50 group">
+        {showModal && <Modal onClose={() => setShowModal(false)} toggle={toggleSound} />}
+        {currentSong && (
+          <audio ref={audioRef} key={currentSong.name} loop>
+            <source src={`/audio/${currentSong.file}`} type="audio/mpeg" />
+            Your Browser does not support the audio element.
+          </audio>
         )}
-      </motion.button>
-    </div>
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.5 }}
+          onClick={toggleSound}
+          className="text-foreground rounded-full flex items-center justify-center custom-bg fixed right-[3%] top-10 w-fit self-start z-50"
+          aria-label={'sound'}
+          name={'sound'}>
+          {isPlaying ? (
+            <span className="relative w-14 h-14 p-4 hover:text-accent">
+              <Volume2 className="w-full h-auto" strokeWidth={1.5} />
+              <span className="peer absolute top-0 left-0 w-full h-full" />
+              <span
+                className="absolute hidden peer-hover:block px-2 py-1  mx-2 top-1/2 -translate-y-1/2 
+          bg-background text-foreground text-sm rounded-md shadow-lg right-full left-auto">
+                music on
+              </span>
+            </span>
+          ) : (
+            <span className="relative w-14 h-14 p-4 hover:text-accent">
+              <VolumeX className="w-full h-auto" strokeWidth={1.5} />
+              <span className="peer absolute top-0 left-0 w-full h-full" />
+              <span
+                className="absolute hidden peer-hover:block px-2 py-1  mx-2 top-1/2 -translate-y-1/2 
+          bg-background text-foreground text-sm rounded-md shadow-lg right-full left-auto">
+                music off
+              </span>
+            </span>
+          )}
+        </motion.button>
+      </div>
+    </>
   );
 };
 

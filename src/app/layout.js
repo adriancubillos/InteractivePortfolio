@@ -3,6 +3,7 @@ import './globals.css';
 import clsx from 'clsx';
 import FireFliesBackground from './components/FireFliesBackground';
 import Sound from './components/Sound';
+import { Toaster } from 'sonner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <body className={clsx(inter.variable, 'bg-background text-foreground font-inter')}>
+        <Toaster richColors={true} />
         {children}
         <FireFliesBackground />
         <Sound />
