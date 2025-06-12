@@ -19,10 +19,10 @@ Websites:
 export const projectsData = [
   {
     id: 1,
-    name: 'EcoTracker',
-    description: 'Track your carbon footprint',
-    date: '2022-08-15',
-    demoLink: 'https://ecotracker.example.com',
+    name: 'Movie Catalog',
+    description: 'Using Vite, React and Appwrite',
+    date: '2025-06-12',
+    demoLink: 'https://movie-catalog-nine-eta.vercel.app/',
   },
   {
     id: 2,
