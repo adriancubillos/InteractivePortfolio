@@ -26,10 +26,10 @@ export const projectsData = [
   },
   {
     id: 2,
-    name: 'ArtGallery Online',
-    description: 'Digital art showcase platform',
-    date: '2022-06-20',
-    demoLink: 'https://artgalleryonline.example.com',
+    name: 'AI Prep Wizard',
+    description: 'Practice job interviews with AI',
+    date: '2025-07-03',
+    demoLink: 'https://interviewer-ai-beta.vercel.app/',
   },
   {
     id: 3,
